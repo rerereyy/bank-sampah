@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --cover: #143324;
+  --cover-deep: #0d2419;
+  --gold: #c9a227;
+  --gold-soft: #e3cd7c;
+  --paper: #efe8d4;
+  --paper-soft: #f6f1e2;
+  --ink: #2b2118;
+  --ink-soft: #5c5240;
+  --rule: #b9ae8f;
+  --leaf: #4c7a50;
+  --leaf-deep: #345a38;
+  --stamp: #a13d2b;
+}
+
+@theme inline {
+  --color-cover: var(--cover);
+  --color-cover-deep: var(--cover-deep);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-paper: var(--paper);
+  --color-paper-soft: var(--paper-soft);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-leaf: var(--leaf);
+  --color-leaf-deep: var(--leaf-deep);
+  --color-stamp: var(--stamp);
+  --font-display: var(--font-fraunces);
+  --font-mono: var(--font-space-mono);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.ruled {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 35px,
+    var(--rule) 35px,
+    var(--rule) 36px
+  );
+}
+
+.stamp {
+  border: 2px solid var(--stamp);
+  color: var(--stamp);
+  transform: rotate(-4deg);
+  border-radius: 6px;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
