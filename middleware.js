@@ -12,7 +12,26 @@ export async function middleware(request) {
   }
 
   try {
-    await jwtVerify(token, key);
+    const { payload } = await jwtVerify(token, key);
+    const { pathname } = request.nextUrl;
+
+    // Admin-only routes
+    if (pathname.startsWith("/dashboard/setoran") ||
+        pathname.startsWith("/dashboard/jenis-sampah") ||
+        pathname === "/dashboard/penarikan") {
+      if (payload.role !== "admin") {
+        return NextResponse.redirect(new URL("/dashboard/nasabah", request.url));
+      }
+    }
+
+    // Nasabah-specific routes
+    if (pathname.startsWith("/dashboard/riwayat") ||
+        pathname.startsWith("/dashboard/penarikan-saya")) {
+      if (payload.role !== "nasabah") {
+        return NextResponse.redirect(new URL("/dashboard", request.url));
+      }
+    }
+
     return NextResponse.next();
   } catch {
     return NextResponse.redirect(new URL("/login", request.url));
