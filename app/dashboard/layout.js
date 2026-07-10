@@ -7,11 +7,12 @@ import {
   Wallet,
   Trophy,
   LogOut,
+  History,
 } from "lucide-react";
 import { getSession } from "@/lib/auth";
 import { logout } from "@/lib/actions";
 
-const nav = [
+const adminNav = [
   { href: "/dashboard", label: "Ringkasan", icon: LayoutDashboard },
   { href: "/dashboard/setoran", label: "Setor Sampah", icon: Recycle },
   { href: "/dashboard/nasabah", label: "Nasabah", icon: Users },
@@ -20,8 +21,16 @@ const nav = [
   { href: "/dashboard/leaderboard", label: "Peringkat Warga", icon: Trophy },
 ];
 
+const nasabahNav = [
+  { href: "/dashboard/nasabah", label: "Ringkasan", icon: LayoutDashboard },
+  { href: "/dashboard/riwayat", label: "Riwayat Setoran", icon: History },
+  { href: "/dashboard/penarikan-saya", label: "Tarik Saldo", icon: Wallet },
+  { href: "/dashboard/leaderboard", label: "Peringkat", icon: Trophy },
+];
+
 export default async function DashboardLayout({ children }) {
   const session = await getSession();
+  const nav = session?.role === "admin" ? adminNav : nasabahNav;
 
   return (
     <div className="flex-1 flex flex-col md:flex-row bg-paper">
@@ -32,6 +41,9 @@ export default async function DashboardLayout({ children }) {
           </div>
           <div className="text-xs text-paper-soft/50 font-mono mt-1">
             {session?.nama}
+          </div>
+          <div className="text-xs text-gold-soft/70 font-mono mt-0.5">
+            {session?.role === "admin" ? "Petugas" : "Nasabah"}
           </div>
         </div>
 

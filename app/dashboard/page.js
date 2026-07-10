@@ -9,6 +9,12 @@ export default async function DashboardPage() {
   const stats = await getDashboardStats();
   const recent = (await getSetoranList(6));
 
+  // Serialize data to plain objects (Turso rows may contain non-serializable values)
+  const mingguan = stats.mingguan.map((d) => ({
+    hari: String(d.hari),
+    berat: Number(d.berat),
+  }));
+
   const cards = [
     { icon: Users, label: "Nasabah Terdaftar", value: stats.totalWarga },
     { icon: Scale, label: "Total Sampah Tertimbang", value: `${stats.totalBerat.toFixed(1)} kg` },
@@ -41,7 +47,7 @@ export default async function DashboardPage() {
       <div className="grid lg:grid-cols-5 gap-6">
         <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl p-6">
           <h2 className="font-display text-lg mb-4">Berat Setoran 7 Hari Terakhir</h2>
-          <WeeklyChart data={stats.mingguan} />
+          <WeeklyChart data={mingguan} />
         </div>
 
         <div className="lg:col-span-2 bg-paper-soft border border-rule rounded-xl p-6">
