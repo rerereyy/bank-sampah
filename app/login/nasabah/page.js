@@ -1,11 +1,11 @@
 "use client";
 
 import { useActionState } from "react";
-import { Recycle, Users } from "lucide-react";
+import { Recycle, UserPlus } from "lucide-react";
 import { login } from "@/lib/actions";
 import Link from "next/link";
 
-export default function LoginPage() {
+export default function NasabahLoginPage() {
   const [state, formAction, pending] = useActionState(login, null);
 
   return (
@@ -17,7 +17,7 @@ export default function LoginPage() {
             Bank Sampah Digital
           </h1>
           <p className="text-xs text-paper-soft/60 mt-1 font-mono">
-            Halaman Petugas
+            Halaman Nasabah
           </p>
         </div>
 
@@ -32,7 +32,6 @@ export default function LoginPage() {
             <input
               name="username"
               required
-              defaultValue="admin"
               className="mt-1 w-full border border-rule rounded-lg px-3 py-2 bg-paper focus:outline-none focus:ring-2 focus:ring-leaf"
             />
           </div>
@@ -44,7 +43,6 @@ export default function LoginPage() {
               name="password"
               type="password"
               required
-              defaultValue="banksampah123"
               className="mt-1 w-full border border-rule rounded-lg px-3 py-2 bg-paper focus:outline-none focus:ring-2 focus:ring-leaf"
             />
           </div>
@@ -55,6 +53,12 @@ export default function LoginPage() {
             </p>
           )}
 
+          {state?.success && (
+            <p className="text-sm text-leaf-deep bg-leaf/10 rounded-lg px-3 py-2">
+              {state.success}
+            </p>
+          )}
+
           <button
             type="submit"
             disabled={pending}
@@ -62,25 +66,21 @@ export default function LoginPage() {
           >
             {pending ? "Memeriksa…" : "Masuk"}
           </button>
-
-          <p className="text-xs text-ink-soft text-center font-mono">
-            Akun demo admin: admin / banksampah123
-          </p>
         </form>
 
         <div className="mt-6 space-y-3">
           <Link
-            href="/login/nasabah"
+            href="/register"
             className="flex items-center justify-center gap-2 text-paper-soft/70 text-sm hover:text-gold-soft"
           >
-            <Users size={16} />
-            Login sebagai Nasabah
+            <UserPlus size={16} />
+            Belum punya akun? Daftar di sini
           </Link>
           <Link
-            href="/"
+            href="/login"
             className="block text-center text-paper-soft/50 text-sm hover:text-gold-soft"
           >
-            ← Kembali ke beranda
+            ← Kembali ke login admin
           </Link>
         </div>
       </div>
