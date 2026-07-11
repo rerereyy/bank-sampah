@@ -170,7 +170,7 @@ export default async function NasabahPage() {
           <NasabahForm />
         </div>
 
-        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl">
+        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm min-w-[500px]">
               <thead>
