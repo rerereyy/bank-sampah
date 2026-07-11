@@ -29,9 +29,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="id"
-      className={`${fraunces.variable} ${spaceMono.variable} ${inter.variable} h-full antialiased overflow-x-hidden`}
+      className={`${fraunces.variable} ${spaceMono.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-paper text-ink overflow-x-hidden">
+      <body className="min-h-full flex flex-col bg-paper text-ink">
         {children}
       </body>
     </html>
