@@ -47,23 +47,24 @@ export default async function DashboardLayout({ children }) {
           </div>
         </div>
 
-        <nav className="flex md:flex-col overflow-x-auto md:overflow-visible flex-1 px-2 md:px-3 py-3 md:py-4 gap-1 text-sm">
+        <nav className="flex md:flex-col overflow-x-auto md:overflow-visible flex-1 px-2 md:px-3 py-3 md:py-4 gap-1 text-sm scrollbar-hide">
           {nav.map(({ href, label, icon: Icon }) => (
             <Link
               key={href}
               href={href}
-              className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-white/10 whitespace-nowrap transition-colors"
+              className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-white/10 whitespace-nowrap transition-colors shrink-0"
             >
               <Icon size={17} strokeWidth={1.8} />
               {label}
             </Link>
           ))}
-          <form action={logout} className="md:hidden">
+          <form action={logout} className="md:hidden shrink-0">
             <button className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-white/10 whitespace-nowrap text-sm text-paper-soft/70">
               <LogOut size={17} strokeWidth={1.8} />
               Keluar
             </button>
           </form>
+          <div className="md:hidden w-4 shrink-0" />
         </nav>
 
         <form action={logout} className="px-3 pb-4 hidden md:block">
