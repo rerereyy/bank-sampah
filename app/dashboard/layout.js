@@ -35,7 +35,7 @@ export default async function DashboardLayout({ children }) {
   return (
     <>
       {/* Mobile top bar - outside flex, full width */}
-      <div className="md:hidden bg-cover text-paper-soft sticky top-0 z-30 w-screen">
+      <div className="md:hidden bg-cover text-paper-soft sticky top-0 z-30">
         <div className="px-4 pt-3 pb-2 border-b border-gold/15">
           <div className="flex items-center justify-between">
             <div className="font-display italic text-gold-soft text-sm">
