@@ -68,67 +68,69 @@ export default async function PenarikanPage() {
       </div>
 
       {/* Pending Requests */}
-      <div className="bg-paper-soft border border-gold/30 rounded-xl overflow-hidden">
+      <div className="bg-paper-soft border border-gold/30 rounded-xl">
         <div className="px-4 py-3 bg-gold/10 border-b border-gold/20">
           <h2 className="font-mono text-sm uppercase text-gold-deep">
             Menunggu Konfirmasi ({pending.length})
           </h2>
         </div>
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="text-left font-mono text-xs uppercase text-ink-soft">
-              <th className="px-4 py-3">Nasabah</th>
-              <th className="px-4 py-3">Jumlah</th>
-              <th className="px-4 py-3">Keterangan</th>
-              <th className="px-4 py-3">Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {pending.length === 0 && (
-              <tr>
-                <td colSpan={4} className="px-4 py-8 text-center text-ink-soft">
-                  Tidak ada penarikan yang menunggu konfirmasi.
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm min-w-[500px]">
+            <thead>
+              <tr className="text-left font-mono text-xs uppercase text-ink-soft">
+                <th className="px-4 py-3">Nasabah</th>
+                <th className="px-4 py-3">Jumlah</th>
+                <th className="px-4 py-3">Keterangan</th>
+                <th className="px-4 py-3 text-right">Aksi</th>
               </tr>
-            )}
-            {pending.map((p) => (
-              <tr key={p.id} className="border-t border-rule">
-                <td className="px-4 py-3">
-                  <div className="font-medium">{p.warga_nama}</div>
-                  <div className="text-xs text-ink-soft font-mono">
-                    {new Date(p.tanggal).toLocaleDateString("id-ID")}
-                  </div>
-                </td>
-                <td className="px-4 py-3 font-mono text-stamp">{rupiah(p.jumlah)}</td>
-                <td className="px-4 py-3 text-ink-soft">{p.keterangan || "-"}</td>
-                <td className="px-4 py-3">
-                  <div className="flex items-center gap-2">
-                    <form action={konfirmasiPenarikan}>
-                      <input type="hidden" name="id" value={p.id} />
-                      <input type="hidden" name="status" value="approved" />
-                      <button
-                        type="submit"
-                        className="px-3 py-1.5 bg-leaf-deep text-paper-soft rounded-lg text-xs font-medium hover:bg-leaf transition-colors"
-                      >
-                        Setuju
-                      </button>
-                    </form>
-                    <form action={konfirmasiPenarikan}>
-                      <input type="hidden" name="id" value={p.id} />
-                      <input type="hidden" name="status" value="rejected" />
-                      <button
-                        type="submit"
-                        className="px-3 py-1.5 bg-stamp text-paper-soft rounded-lg text-xs font-medium hover:opacity-80 transition-colors"
-                      >
-                        Tolak
-                      </button>
-                    </form>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {pending.length === 0 && (
+                <tr>
+                  <td colSpan={4} className="px-4 py-8 text-center text-ink-soft">
+                    Tidak ada penarikan yang menunggu konfirmasi.
+                  </td>
+                </tr>
+              )}
+              {pending.map((p) => (
+                <tr key={p.id} className="border-t border-rule">
+                  <td className="px-4 py-3">
+                    <div className="font-medium">{p.warga_nama}</div>
+                    <div className="text-xs text-ink-soft font-mono">
+                      {new Date(p.tanggal).toLocaleDateString("id-ID")}
+                    </div>
+                  </td>
+                  <td className="px-4 py-3 font-mono text-stamp">{rupiah(p.jumlah)}</td>
+                  <td className="px-4 py-3 text-ink-soft">{p.keterangan || "-"}</td>
+                  <td className="px-4 py-3">
+                    <div className="flex items-center justify-end gap-2">
+                      <form action={konfirmasiPenarikan}>
+                        <input type="hidden" name="id" value={p.id} />
+                        <input type="hidden" name="status" value="approved" />
+                        <button
+                          type="submit"
+                          className="px-3 py-1.5 bg-leaf-deep text-paper-soft rounded-lg text-xs font-medium hover:bg-leaf transition-colors"
+                        >
+                          Setuju
+                        </button>
+                      </form>
+                      <form action={konfirmasiPenarikan}>
+                        <input type="hidden" name="id" value={p.id} />
+                        <input type="hidden" name="status" value="rejected" />
+                        <button
+                          type="submit"
+                          className="px-3 py-1.5 bg-stamp text-paper-soft rounded-lg text-xs font-medium hover:opacity-80 transition-colors"
+                        >
+                          Tolak
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Direct Withdrawal Form */}
@@ -144,42 +146,44 @@ export default async function PenarikanPage() {
         </div>
 
         {/* History */}
-        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl overflow-hidden">
+        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl">
           <div className="px-4 py-3 bg-cover text-paper-soft">
             <h2 className="font-mono text-xs uppercase">Riwayat Penarikan</h2>
           </div>
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="text-left font-mono text-xs uppercase text-ink-soft">
-                <th className="px-4 py-3">Nasabah</th>
-                <th className="px-4 py-3">Jumlah</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Ket.</th>
-              </tr>
-            </thead>
-            <tbody>
-              {processed.length === 0 && (
-                <tr>
-                  <td colSpan={4} className="px-4 py-8 text-center text-ink-soft">
-                    Belum ada riwayat penarikan.
-                  </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm min-w-[450px]">
+              <thead>
+                <tr className="text-left font-mono text-xs uppercase text-ink-soft">
+                  <th className="px-4 py-3">Nasabah</th>
+                  <th className="px-4 py-3">Jumlah</th>
+                  <th className="px-4 py-3">Status</th>
+                  <th className="px-4 py-3">Ket.</th>
                 </tr>
-              )}
-              {processed.map((p) => (
-                <tr key={p.id} className="border-t border-rule">
-                  <td className="px-4 py-3">
-                    <div className="font-medium">{p.warga_nama}</div>
-                    <div className="text-xs text-ink-soft font-mono">
-                      {new Date(p.tanggal).toLocaleDateString("id-ID")}
-                    </div>
-                  </td>
-                  <td className="px-4 py-3 font-mono text-stamp">-{rupiah(p.jumlah)}</td>
-                  <td className="px-4 py-3">{statusBadge(p.status)}</td>
-                  <td className="px-4 py-3 text-ink-soft">{p.keterangan || "-"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {processed.length === 0 && (
+                  <tr>
+                    <td colSpan={4} className="px-4 py-8 text-center text-ink-soft">
+                      Belum ada riwayat penarikan.
+                    </td>
+                  </tr>
+                )}
+                {processed.map((p) => (
+                  <tr key={p.id} className="border-t border-rule">
+                    <td className="px-4 py-3">
+                      <div className="font-medium">{p.warga_nama}</div>
+                      <div className="text-xs text-ink-soft font-mono">
+                        {new Date(p.tanggal).toLocaleDateString("id-ID")}
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 font-mono text-stamp">-{rupiah(p.jumlah)}</td>
+                    <td className="px-4 py-3">{statusBadge(p.status)}</td>
+                    <td className="px-4 py-3 text-ink-soft">{p.keterangan || "-"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

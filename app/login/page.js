@@ -32,7 +32,6 @@ export default function LoginPage() {
             <input
               name="username"
               required
-              defaultValue="admin"
               className="mt-1 w-full border border-rule rounded-lg px-3 py-2 bg-paper focus:outline-none focus:ring-2 focus:ring-leaf"
             />
           </div>
@@ -44,7 +43,6 @@ export default function LoginPage() {
               name="password"
               type="password"
               required
-              defaultValue="banksampah123"
               className="mt-1 w-full border border-rule rounded-lg px-3 py-2 bg-paper focus:outline-none focus:ring-2 focus:ring-leaf"
             />
           </div>
@@ -62,10 +60,6 @@ export default function LoginPage() {
           >
             {pending ? "Memeriksa…" : "Masuk"}
           </button>
-
-          <p className="text-xs text-ink-soft text-center font-mono">
-            Akun demo admin: admin / banksampah123
-          </p>
         </form>
 
         <div className="mt-6 space-y-3">

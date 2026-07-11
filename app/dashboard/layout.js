@@ -58,6 +58,12 @@ export default async function DashboardLayout({ children }) {
               {label}
             </Link>
           ))}
+          <form action={logout} className="md:hidden">
+            <button className="flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-white/10 whitespace-nowrap text-sm text-paper-soft/70">
+              <LogOut size={17} strokeWidth={1.8} />
+              Keluar
+            </button>
+          </form>
         </nav>
 
         <form action={logout} className="px-3 pb-4 hidden md:block">
@@ -68,7 +74,7 @@ export default async function DashboardLayout({ children }) {
         </form>
       </aside>
 
-      <main className="flex-1 px-6 md:px-10 py-8 md:py-10 max-w-6xl">
+      <main className="flex-1 px-4 sm:px-6 md:px-10 py-6 md:py-10 max-w-6xl">
         {children}
       </main>
     </div>

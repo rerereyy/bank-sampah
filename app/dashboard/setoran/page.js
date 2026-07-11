@@ -31,41 +31,43 @@ export default async function SetoranPage() {
           )}
         </div>
 
-        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl overflow-hidden">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="bg-cover text-paper-soft text-left font-mono text-xs uppercase">
-                <th className="px-4 py-3">Nasabah</th>
-                <th className="px-4 py-3">Jenis</th>
-                <th className="px-4 py-3">Berat</th>
-                <th className="px-4 py-3">Nilai</th>
-              </tr>
-            </thead>
-            <tbody>
-              {riwayat.length === 0 && (
-                <tr>
-                  <td colSpan={4} className="px-4 py-8 text-center text-ink-soft">
-                    Belum ada setoran.
-                  </td>
+        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm min-w-[450px]">
+              <thead>
+                <tr className="bg-cover text-paper-soft text-left font-mono text-xs uppercase">
+                  <th className="px-4 py-3">Nasabah</th>
+                  <th className="px-4 py-3">Jenis</th>
+                  <th className="px-4 py-3">Berat</th>
+                  <th className="px-4 py-3">Nilai</th>
                 </tr>
-              )}
-              {riwayat.map((s) => (
-                <tr key={s.id} className="border-t border-rule hover:bg-paper cursor-pointer">
-                  <td className="px-4 py-3">
-                    <Link href={`/dashboard/setoran/${s.id}`} className="font-medium hover:underline">
-                      {s.warga_nama}
-                    </Link>
-                    <div className="text-xs text-ink-soft font-mono">
-                      {new Date(s.tanggal).toLocaleDateString("id-ID")}
-                    </div>
-                  </td>
-                  <td className="px-4 py-3">{s.jenis_nama}</td>
-                  <td className="px-4 py-3 font-mono">{Number(s.berat_kg).toFixed(1)} kg</td>
-                  <td className="px-4 py-3 font-mono text-leaf-deep">{rupiah(s.total_rupiah)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {riwayat.length === 0 && (
+                  <tr>
+                    <td colSpan={4} className="px-4 py-8 text-center text-ink-soft">
+                      Belum ada setoran.
+                    </td>
+                  </tr>
+                )}
+                {riwayat.map((s) => (
+                  <tr key={s.id} className="border-t border-rule hover:bg-paper cursor-pointer">
+                    <td className="px-4 py-3">
+                      <Link href={`/dashboard/setoran/${s.id}`} className="font-medium hover:underline">
+                        {s.warga_nama}
+                      </Link>
+                      <div className="text-xs text-ink-soft font-mono">
+                        {new Date(s.tanggal).toLocaleDateString("id-ID")}
+                      </div>
+                    </td>
+                    <td className="px-4 py-3">{s.jenis_nama}</td>
+                    <td className="px-4 py-3 font-mono">{Number(s.berat_kg).toFixed(1)} kg</td>
+                    <td className="px-4 py-3 font-mono text-leaf-deep">{rupiah(s.total_rupiah)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

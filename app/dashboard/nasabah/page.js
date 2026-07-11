@@ -170,47 +170,49 @@ export default async function NasabahPage() {
           <NasabahForm />
         </div>
 
-        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl overflow-hidden">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="bg-cover text-paper-soft text-left font-mono text-xs uppercase">
-                <th className="px-4 py-3">Nama</th>
-                <th className="px-4 py-3">RT</th>
-                <th className="px-4 py-3">Saldo</th>
-                <th className="px-4 py-3">Poin</th>
-                <th className="px-4 py-3"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {warga.length === 0 && (
-                <tr>
-                  <td colSpan={5} className="px-4 py-8 text-center text-ink-soft">
-                    Belum ada nasabah.
-                  </td>
+        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm min-w-[500px]">
+              <thead>
+                <tr className="bg-cover text-paper-soft text-left font-mono text-xs uppercase">
+                  <th className="px-4 py-3">Nama</th>
+                  <th className="px-4 py-3">RT</th>
+                  <th className="px-4 py-3">Saldo</th>
+                  <th className="px-4 py-3">Poin</th>
+                  <th className="px-4 py-3 text-right">Aksi</th>
                 </tr>
-              )}
-              {warga.map((w) => (
-                <tr key={w.id} className="border-t border-rule">
-                  <td className="px-4 py-3">
-                    <div className="font-medium">{w.nama}</div>
-                    <div className="text-xs text-ink-soft">{w.no_hp}</div>
-                  </td>
-                  <td className="px-4 py-3 font-mono text-xs">{w.rt || "-"}</td>
-                  <td className="px-4 py-3 font-mono">{rupiah(w.saldo)}</td>
-                  <td className="px-4 py-3 font-mono">{w.total_poin}</td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center gap-1">
-                      <EditWargaButton warga={w} />
-                      <DeleteButton
-                        action={hapusWarga.bind(null, w.id)}
-                        confirmText={`Hapus nasabah "${w.nama}" beserta riwayat transaksinya?`}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {warga.length === 0 && (
+                  <tr>
+                    <td colSpan={5} className="px-4 py-8 text-center text-ink-soft">
+                      Belum ada nasabah.
+                    </td>
+                  </tr>
+                )}
+                {warga.map((w) => (
+                  <tr key={w.id} className="border-t border-rule">
+                    <td className="px-4 py-3">
+                      <div className="font-medium">{w.nama}</div>
+                      <div className="text-xs text-ink-soft">{w.no_hp}</div>
+                    </td>
+                    <td className="px-4 py-3 font-mono text-xs">{w.rt || "-"}</td>
+                    <td className="px-4 py-3 font-mono">{rupiah(w.saldo)}</td>
+                    <td className="px-4 py-3 font-mono">{w.total_poin}</td>
+                    <td className="px-4 py-3">
+                      <div className="flex items-center justify-end gap-1">
+                        <EditWargaButton warga={w} />
+                        <DeleteButton
+                          action={hapusWarga.bind(null, w.id)}
+                          confirmText={`Hapus nasabah "${w.nama}" beserta riwayat transaksinya?`}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

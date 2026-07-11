@@ -23,42 +23,44 @@ export default async function JenisSampahPage() {
           <JenisSampahForm />
         </div>
 
-        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl overflow-hidden">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="bg-cover text-paper-soft text-left font-mono text-xs uppercase">
-                <th className="px-4 py-3">Jenis</th>
-                <th className="px-4 py-3">Harga</th>
-                <th className="px-4 py-3">Poin</th>
-                <th className="px-4 py-3"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {jenis.length === 0 && (
-                <tr>
-                  <td colSpan={4} className="px-4 py-8 text-center text-ink-soft">
-                    Belum ada jenis sampah.
-                  </td>
+        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm min-w-[400px]">
+              <thead>
+                <tr className="bg-cover text-paper-soft text-left font-mono text-xs uppercase">
+                  <th className="px-4 py-3">Jenis</th>
+                  <th className="px-4 py-3">Harga</th>
+                  <th className="px-4 py-3">Poin</th>
+                  <th className="px-4 py-3 text-right">Aksi</th>
                 </tr>
-              )}
-              {jenis.map((j) => (
-                <tr key={j.id} className="border-t border-rule">
-                  <td className="px-4 py-3 font-medium">{j.nama}</td>
-                  <td className="px-4 py-3 font-mono">{rupiah(j.harga_per_kg)}/{j.satuan}</td>
-                  <td className="px-4 py-3 font-mono">{j.poin_per_kg}/{j.satuan}</td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center gap-1">
-                      <EditJenisSampahButton jenis={j} />
-                      <DeleteButton
-                        action={hapusJenisSampah.bind(null, j.id)}
-                        confirmText={`Hapus jenis sampah "${j.nama}"?`}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {jenis.length === 0 && (
+                  <tr>
+                    <td colSpan={4} className="px-4 py-8 text-center text-ink-soft">
+                      Belum ada jenis sampah.
+                    </td>
+                  </tr>
+                )}
+                {jenis.map((j) => (
+                  <tr key={j.id} className="border-t border-rule">
+                    <td className="px-4 py-3 font-medium">{j.nama}</td>
+                    <td className="px-4 py-3 font-mono">{rupiah(j.harga_per_kg)}/{j.satuan}</td>
+                    <td className="px-4 py-3 font-mono">{j.poin_per_kg}/{j.satuan}</td>
+                    <td className="px-4 py-3">
+                      <div className="flex items-center justify-end gap-1">
+                        <EditJenisSampahButton jenis={j} />
+                        <DeleteButton
+                          action={hapusJenisSampah.bind(null, j.id)}
+                          confirmText={`Hapus jenis sampah "${j.nama}"?`}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
