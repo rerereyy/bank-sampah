@@ -33,7 +33,7 @@ export default async function DashboardLayout({ children }) {
   const nav = session?.role === "admin" ? adminNav : nasabahNav;
 
   return (
-    <div className="flex-1 flex flex-col md:flex-row bg-paper min-h-screen">
+    <div className="flex-1 flex flex-col md:flex-row bg-paper min-h-screen w-full max-w-full overflow-x-hidden">
       {/* Desktop sidebar */}
       <aside className="hidden md:flex md:w-64 shrink-0 bg-cover text-paper-soft flex-col md:min-h-screen">
         <div className="px-6 py-6 border-b border-gold/15">
@@ -69,9 +69,9 @@ export default async function DashboardLayout({ children }) {
         </form>
       </aside>
 
-      <div className="flex-1 min-w-0 flex flex-col">
+      <div className="flex-1 min-w-0 w-full max-w-full flex flex-col">
         {/* Mobile top bar */}
-        <div className="md:hidden shrink-0 bg-cover text-paper-soft sticky top-0 z-30">
+        <div className="md:hidden shrink-0 w-full bg-cover text-paper-soft">
           <div className="px-4 pt-3 pb-2 border-b border-gold/15">
             <div className="flex items-center justify-between">
               <div className="font-display italic text-gold-soft text-sm">
@@ -84,12 +84,12 @@ export default async function DashboardLayout({ children }) {
               </form>
             </div>
           </div>
-          <nav className="flex overflow-x-auto px-3 py-2 gap-1 text-sm scrollbar-hide">
+          <nav className="flex flex-wrap px-3 py-2 gap-1 text-sm">
             {nav.map(({ href, label, icon: Icon }) => (
               <Link
                 key={href}
                 href={href}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 whitespace-nowrap transition-colors shrink-0"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 transition-colors"
               >
                 <Icon size={15} strokeWidth={1.8} />
                 {label}
@@ -98,7 +98,7 @@ export default async function DashboardLayout({ children }) {
           </nav>
         </div>
 
-        <main className="flex-1 px-4 sm:px-6 md:px-10 py-4 md:py-10 max-w-6xl">
+        <main className="flex-1 px-4 sm:px-6 md:px-10 py-4 md:py-10 max-w-6xl w-full">
           {children}
         </main>
       </div>
