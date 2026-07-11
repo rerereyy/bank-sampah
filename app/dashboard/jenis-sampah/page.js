@@ -23,7 +23,7 @@ export default async function JenisSampahPage() {
           <JenisSampahForm />
         </div>
 
-        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl">
+        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl w-full min-w-0 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm min-w-[400px]">
               <thead>

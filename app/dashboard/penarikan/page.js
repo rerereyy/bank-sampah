@@ -68,7 +68,7 @@ export default async function PenarikanPage() {
       </div>
 
       {/* Pending Requests */}
-      <div className="bg-paper-soft border border-gold/30 rounded-xl">
+      <div className="bg-paper-soft border border-gold/30 rounded-xl w-full min-w-0 overflow-hidden">
         <div className="px-4 py-3 bg-gold/10 border-b border-gold/20">
           <h2 className="font-mono text-sm uppercase text-gold-deep">
             Menunggu Konfirmasi ({pending.length})
@@ -146,7 +146,7 @@ export default async function PenarikanPage() {
         </div>
 
         {/* History */}
-        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl">
+        <div className="lg:col-span-3 bg-paper-soft border border-rule rounded-xl w-full min-w-0 overflow-hidden">
           <div className="px-4 py-3 bg-cover text-paper-soft">
             <h2 className="font-mono text-xs uppercase">Riwayat Penarikan</h2>
           </div>

@@ -33,7 +33,7 @@ export default async function DashboardLayout({ children }) {
   const nav = session?.role === "admin" ? adminNav : nasabahNav;
 
   return (
-    <div className="flex-1 flex flex-col md:flex-row bg-paper min-h-screen w-full overflow-x-clip">
+    <div className="flex-1 flex flex-col md:flex-row bg-paper min-h-screen w-full">
       {/* Desktop sidebar */}
       <aside className="hidden md:flex md:w-64 shrink-0 bg-cover text-paper-soft flex-col md:min-h-screen">
         <div className="px-6 py-6 border-b border-gold/15">
