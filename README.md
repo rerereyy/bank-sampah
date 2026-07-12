@@ -1,4 +1,4 @@
-# Bank Sampah Digital
+# Reyxx Trash Bank
 
 Sistem digital "buku tabungan sampah" — mencatat setoran sampah terpilah warga,
 mengonversinya otomatis jadi saldo & poin, mendukung penarikan saldo, dan

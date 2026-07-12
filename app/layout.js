@@ -20,9 +20,9 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Bank Sampah Digital — Buku Tabungan Sampah Warga",
+  title: "Reyxx Trash Bank — Buku Tabungan Sampah Warga",
   description:
-    "Sistem digital pencatatan setoran sampah, poin, dan saldo nasabah bank sampah.",
+    "Sistem digital pencatatan setoran sampah, poin, dan saldo nasabah Reyxx Trash Bank.",
 };
 
 export default function RootLayout({ children }) {

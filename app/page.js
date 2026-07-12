@@ -25,7 +25,7 @@ export default async function Home() {
         <nav className="relative z-10 flex items-center justify-between px-6 md:px-14 py-7">
           <div className="flex items-center gap-2 font-display italic text-lg text-gold-soft">
             <Recycle size={20} strokeWidth={2.2} />
-            Bank Sampah Digital
+            Reyxx Trash Bank
           </div>
           <Link
             href="/login"
@@ -177,7 +177,7 @@ export default async function Home() {
       {/* BACK COVER */}
       <footer className="bg-cover-deep text-paper-soft/60 px-6 md:px-14 py-10 flex flex-col md:flex-row justify-between gap-3 text-sm">
         <span className="font-display italic text-gold-soft">
-          Bank Sampah Digital
+          Reyxx Trash Bank
         </span>
         <span className="font-mono">
           Proyek UAS · Pemrograman Web · {new Date().getFullYear()}
