@@ -17,7 +17,7 @@ export default function RegisterPage() {
             Daftar Nasabah
           </h1>
           <p className="text-xs text-paper-soft/60 mt-1 font-mono">
-            Bank Sampah Digital
+            Reyxx Trash Bank
           </p>
         </div>
 

@@ -38,7 +38,7 @@ export default async function DashboardLayout({ children }) {
       <aside className="hidden md:flex md:w-64 shrink-0 bg-cover text-paper-soft flex-col md:min-h-screen">
         <div className="px-6 py-6 border-b border-gold/15">
           <div className="font-display italic text-gold-soft text-lg">
-            Bank Sampah Digital
+            Reyxx Trash Bank
           </div>
           <div className="text-xs text-paper-soft/50 font-mono mt-1">
             {session?.nama}
@@ -75,7 +75,7 @@ export default async function DashboardLayout({ children }) {
           <div className="px-4 pt-3 pb-2 border-b border-gold/15">
             <div className="flex items-center justify-between">
               <div className="font-display italic text-gold-soft text-sm">
-                Bank Sampah Digital
+                Reyxx Trash Bank
               </div>
               <form action={logout}>
                 <button className="text-xs text-paper-soft/60 hover:text-paper-soft">

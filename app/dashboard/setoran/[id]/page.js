@@ -27,7 +27,7 @@ export default async function BuktiSetoranPage({ params }) {
         <div className="bg-cover text-paper-soft px-6 py-5 flex items-center gap-2">
           <Recycle size={18} className="text-gold-soft" />
           <div>
-            <div className="font-display italic text-gold-soft text-sm">Bank Sampah Digital</div>
+            <div className="font-display italic text-gold-soft text-sm">Reyxx Trash Bank</div>
             <div className="text-[10px] text-paper-soft/60 font-mono">Bukti Setoran Sah</div>
           </div>
         </div>

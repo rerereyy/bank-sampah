@@ -14,7 +14,7 @@ export default function NasabahLoginPage() {
         <div className="flex flex-col items-center mb-8 text-paper-soft">
           <Recycle size={28} className="text-gold-soft mb-3" />
           <h1 className="font-display text-2xl italic text-gold-soft">
-            Bank Sampah Digital
+            Reyxx Trash Bank
           </h1>
           <p className="text-xs text-paper-soft/60 mt-1 font-mono">
             Halaman Nasabah

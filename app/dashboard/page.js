@@ -28,7 +28,7 @@ export default async function DashboardPage() {
         Halaman Ringkasan
       </span>
       <h1 className="font-display text-3xl md:text-4xl mt-2 mb-8">
-        Buku besar bank sampah.
+        Buku besar Reyxx Trash Bank.
       </h1>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
